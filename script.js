@@ -21,6 +21,14 @@ searchInput.addEventListener('input', () => {
           const suggestion = document.createElement('div');
           suggestion.classList.add('suggestion');
           suggestion.textContent = meal.strMeal;
+
+          // Create an image element
+          const mealImage = document.createElement('img');
+          mealImage.src = meal.strMealThumb;
+          mealImage.alt = meal.strMeal;
+          mealImage.classList.add('meal-image');
+
+          suggestion.appendChild(mealImage);
           suggestionsContainer.appendChild(suggestion);
         });
       }
