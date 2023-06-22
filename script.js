@@ -40,11 +40,13 @@ searchInput.addEventListener('input', () => {
 
 // Event delegation for suggestion click events
 suggestionsContainer.addEventListener('click', event => {
-  if (event.target.matches('.suggestion')) {
-    const clickedMealName = event.target.textContent;
+  const clickedSuggestion = event.target.closest('.suggestion');
+  if (clickedSuggestion) {
+    const clickedMealName = clickedSuggestion.textContent;
     getMealDetails(clickedMealName);
   }
 });
+
 
 // Fetch meal details from API and display on meal page
 function getMealDetails(mealName) {
