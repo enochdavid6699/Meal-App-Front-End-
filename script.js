@@ -8,6 +8,7 @@ searchInput.addEventListener('input', () => {
   const searchTerm = searchInput.value.trim();
   if (searchTerm === '') {
     suggestionsContainer.innerHTML = '';
+    resultsContainer.innerHTML = '';
     return;
   }
 
