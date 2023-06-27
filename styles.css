@@ -52,7 +52,31 @@
   }
   
   #results-container {
-    margin-bottom: 30px;
+    display: none; /* initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    z-index: 100;
+    border-radius: 5px;
+    width: 80%; /* use percentage to make it responsive */
+    max-width: 500px;
+    text-align: left;
+  }
+  
+  #results-container.modal-open {
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
   }
   
   #favourites-container {
@@ -84,5 +108,11 @@
   
   #favourites-list li button:hover {
     background-color: #ff3333;
+  }
+
+  .modal-close{
+    color: white;
+    background-color: red;
+    padding: 3px;
   }
   
