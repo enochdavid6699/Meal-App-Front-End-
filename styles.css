@@ -79,37 +79,6 @@ h1 {
   cursor: pointer;
 }
 
-#favourites-container {
-  text-align: left;
-}
-
-#favourites-container h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-#favourites-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-#favourites-list li {
-  margin-bottom: 10px;
-}
-
-#favourites-list li button {
-  padding: 5px 10px;
-  background-color: #ff5555;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#favourites-list li button:hover {
-  background-color: #ff3333;
-}
-
 .modal-close{
   color: white;
   background-color: red;
