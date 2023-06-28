@@ -34,6 +34,7 @@ searchInput.addEventListener('input', () => {
           //create fav button
           const favButton = document.createElement('button');
           favButton.textContent = 'Add to Fav';
+          favButton.classList.add('Add-to-fav');
           suggestionsContainer.appendChild(favButton);
 
           suggestion.appendChild(mealImage);
@@ -159,7 +160,8 @@ function showFavDetails(meals) {
       mealImage.alt = meal.strMeal;
 
       const removeButton = document.createElement('button');
-      removeButton.textContent = 'Remove from Favourites';
+      removeButton.textContent = 'Delete';
+      removeButton.classList.add('delete-button');
       removeButton.onclick = function() {
           // remove the meal from favourites
           const removedFavourite = favourites.splice(index, 1);
