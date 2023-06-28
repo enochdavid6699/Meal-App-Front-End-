@@ -4,6 +4,7 @@ const suggestionsContainer = document.getElementById('suggestions-container');
 const resultsContainer = document.getElementById('results-container');
 const favContainer = document.getElementById('fav-container');
 
+//An array to store all the favourite meals
 let favourites = [];
 
 // Event listener for search input
@@ -22,11 +23,15 @@ searchInput.addEventListener('input', () => {
       suggestionsContainer.innerHTML = '';
       if (data.meals) {
         data.meals.forEach(meal => {
+
+          //Parent Div
           const suggestionParent = document.createElement('div');
           suggestionParent.classList.add('suggestion-parent');
 
+          //Suggestions Div
           const suggestion = document.createElement('div');
           suggestion.classList.add('suggestion');
+          //Span for text
           const text = document.createElement('span');
           text.textContent = meal.strMeal;
           suggestion.appendChild(text);
@@ -37,11 +42,10 @@ searchInput.addEventListener('input', () => {
           mealImage.alt = meal.strMeal;
           mealImage.classList.add('meal-image');
 
-          //create fav button
+          //create Add to fav button
           const favButton = document.createElement('button');
           favButton.textContent = 'Add to Fav';
           favButton.classList.add('Add-to-fav');
-          // suggestionsContainer.appendChild(favButton);
 
           suggestion.appendChild(mealImage);
           suggestionParent.appendChild(suggestion);
@@ -73,7 +77,9 @@ suggestionsContainer.addEventListener('click', event => {
 
 // Fetch meal details from API and display on meal page
 function getMealDetails(mealName) {
+  //Fetching by name
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealName}`)
+  //converting to json onject
     .then(response => response.json())
     .then(data => {
       if (data.meals) {
@@ -125,6 +131,7 @@ function showMealDetails(meal) {
 
 // Event delegation for Favourites click events
 favContainer.addEventListener('click', event => {
+  //calling showFav function
   showFav();
 });
 
@@ -132,6 +139,8 @@ favContainer.addEventListener('click', event => {
 //To Display all the Favourites
 async function showFav() {
   let meals = [];
+
+  //Traversing over the array to display all favourite meals
   for (let i = 0; i < favourites.length; i++) {
     try {
       const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${favourites[i]}`);
@@ -186,6 +195,7 @@ function showFavDetails(meals) {
     content.appendChild(removeButton);
   });
 
+  //close button
   const closeButton = document.createElement('button');
   closeButton.textContent = 'X';
   closeButton.classList.add('modal-close');
