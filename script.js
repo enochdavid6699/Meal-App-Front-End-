@@ -65,10 +65,17 @@ function getMealDetails(mealName) {
     });
 }
 
-// Function to display meal details
 function showMealDetails(meal) {
   // Clear the results container
   resultsContainer.innerHTML = '';
+
+  // Create a close button
+  const closeButton = document.createElement('span');
+  closeButton.classList.add('modal-close');
+  closeButton.textContent = '×';
+  closeButton.addEventListener('click', () => {
+    resultsContainer.classList.remove('modal-open');
+  });
 
   // Create elements to display the meal details
   const mealName = document.createElement('h2');
@@ -83,7 +90,43 @@ function showMealDetails(meal) {
   instructions.textContent = meal.strInstructions;
 
   // Append elements to the results container
+  resultsContainer.appendChild(closeButton);
   resultsContainer.appendChild(mealName);
   resultsContainer.appendChild(mealImage);
   resultsContainer.appendChild(instructions);
+
+  // Show the modal
+  resultsContainer.classList.add('modal-open');
+}function showMealDetails(meal) {
+  // Clear the results container
+  resultsContainer.innerHTML = '';
+
+  // Create a close button
+  const closeButton = document.createElement('span');
+  closeButton.classList.add('modal-close');
+  closeButton.textContent = 'X';
+  closeButton.addEventListener('click', () => {
+    resultsContainer.classList.remove('modal-open');
+  });
+
+  // Create elements to display the meal details
+  const mealName = document.createElement('h2');
+  mealName.textContent = meal.strMeal;
+
+  const mealImage = document.createElement('img');
+  mealImage.src = meal.strMealThumb;
+  mealImage.alt = meal.strMeal;
+  mealImage.classList.add('meal-image');
+
+  const instructions = document.createElement('p');
+  instructions.textContent = meal.strInstructions;
+
+  // Append elements to the results container
+  resultsContainer.appendChild(closeButton);
+  resultsContainer.appendChild(mealName);
+  resultsContainer.appendChild(mealImage);
+  resultsContainer.appendChild(instructions);
+
+  // Show the modal
+  resultsContainer.classList.add('modal-open');
 }
