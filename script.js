@@ -21,9 +21,14 @@ searchInput.addEventListener('input', () => {
       suggestionsContainer.innerHTML = '';
       if (data.meals) {
         data.meals.forEach(meal => {
+          const suggestionParent = document.createElement('div');
+          suggestionParent.classList.add('suggestion-parent');
+
           const suggestion = document.createElement('div');
           suggestion.classList.add('suggestion');
-          suggestion.textContent = meal.strMeal;
+          const text = document.createElement('span');
+          text.textContent = meal.strMeal;
+          suggestion.appendChild(text);
 
           // Create an image element
           const mealImage = document.createElement('img');
@@ -35,10 +40,12 @@ searchInput.addEventListener('input', () => {
           const favButton = document.createElement('button');
           favButton.textContent = 'Add to Fav';
           favButton.classList.add('Add-to-fav');
-          suggestionsContainer.appendChild(favButton);
+          // suggestionsContainer.appendChild(favButton);
 
           suggestion.appendChild(mealImage);
-          suggestionsContainer.appendChild(suggestion);
+          suggestionParent.appendChild(suggestion);
+          suggestionParent.appendChild(favButton);
+          suggestionsContainer.appendChild(suggestionParent);
 
           // Event delegation for suggestion click events
           favButton.addEventListener('click', event => {
