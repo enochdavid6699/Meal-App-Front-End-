@@ -1,3 +1,4 @@
+//Getting by id all the html containers and elements
 const searchInput = document.getElementById('search-input');
 const suggestionsContainer = document.getElementById('suggestions-container');
 const resultsContainer = document.getElementById('results-container');
@@ -132,15 +133,15 @@ favContainer.addEventListener('click', event => {
 async function showFav() {
   let meals = [];
   for (let i = 0; i < favourites.length; i++) {
-      try {
-          const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${favourites[i]}`);
-          const data = await response.json();
-          if (data.meals) {
-              meals.push(data.meals[0]);
-          }
-      } catch (error) {
-          console.error('Error fetching meal details:', error);
+    try {
+      const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${favourites[i]}`);
+      const data = await response.json();
+      if (data.meals) {
+        meals.push(data.meals[0]);
       }
+    } catch (error) {
+      console.error('Error fetching meal details:', error);
+    }
   }
   showFavDetails(meals);
 }
@@ -159,30 +160,30 @@ function showFavDetails(meals) {
   content.className = 'modal-content';
 
   meals.forEach((meal, index) => {
-      const mealName = document.createElement('h2');
-      mealName.textContent = meal.strMeal;
+    const mealName = document.createElement('h2');
+    mealName.textContent = meal.strMeal;
 
-      const mealImage = document.createElement('img');
-      mealImage.src = meal.strMealThumb;
-      mealImage.alt = meal.strMeal;
+    const mealImage = document.createElement('img');
+    mealImage.src = meal.strMealThumb;
+    mealImage.alt = meal.strMeal;
 
-      const removeButton = document.createElement('button');
-      removeButton.textContent = 'Delete';
-      removeButton.classList.add('delete-button');
-      removeButton.onclick = function() {
-          // remove the meal from favourites
-          const removedFavourite = favourites.splice(index, 1);
-          console.log(`Removed ${removedFavourite} from favourites.`);
-          
-          // then remove it from the modal
-          mealName.remove();
-          mealImage.remove();
-          removeButton.remove();
-      }
-      
-      content.appendChild(mealName);
-      content.appendChild(mealImage);
-      content.appendChild(removeButton);
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Delete';
+    removeButton.classList.add('delete-button');
+    removeButton.onclick = function () {
+      // remove the meal from favourites
+      const removedFavourite = favourites.splice(index, 1);
+      console.log(`Removed ${removedFavourite} from favourites.`);
+
+      // then remove it from the modal
+      mealName.remove();
+      mealImage.remove();
+      removeButton.remove();
+    }
+
+    content.appendChild(mealName);
+    content.appendChild(mealImage);
+    content.appendChild(removeButton);
   });
 
   const closeButton = document.createElement('button');
@@ -190,7 +191,7 @@ function showFavDetails(meals) {
   closeButton.classList.add('modal-close');
   modal.appendChild(closeButton);
   closeButton.onclick = function () {
-      modal.style.display = 'none';
+    modal.style.display = 'none';
   }
 
   modal.appendChild(content);
