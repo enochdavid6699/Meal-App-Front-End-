@@ -54,9 +54,11 @@ searchInput.addEventListener('input', () => {
 
           // Event delegation for suggestion click events
           favButton.addEventListener('click', event => {
-            favourites.push(meal.strMeal);
-            console.log(meal.strMeal);
-          });
+            if (!favourites.includes(meal.strMeal)) {
+              favourites.push(meal.strMeal);
+              console.log(meal.strMeal);
+            }
+          });          
         });
       }
     })
