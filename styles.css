@@ -1,54 +1,54 @@
 .container {
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
 }
 
 h1 {
-  font-size: 36px;
-  margin-bottom: 30px;
+    font-size: 36px;
+    margin-bottom: 30px;
 }
 
 #search-container {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
 
 #search-input {
-  width: 100%;
-  padding: 10px;
-  font-size: 18px;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
 }
 
 #suggestions-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* Suggestions Styles */
 .suggestion {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  cursor: pointer;
-  flex-direction: column;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    flex-direction: column;
 }
 
-.suggestion-parent{
-  border-bottom: 1px solid #e0e0e0;
+.suggestion-parent {
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .suggestion-parent:hover {
-  background-color: #f5f5f5;
+    background-color: #f5f5f5;
 }
 
-.suggestion span{
-  font-size: large;
-  font: bold;
-  margin-bottom: 20px;
+.suggestion span {
+    font-size: large;
+    font: bold;
+    margin-bottom: 20px;
 }
 
 .meal-image {
-  width: 200px;
+    width: 200px;
     height: auto;
     object-fit: cover;
     margin-right: 10px;
@@ -56,118 +56,120 @@ h1 {
 }
 
 .Add-to-fav {
-  margin-top: 30px;
-  margin-bottom: 20px;
-  padding: 6px 12px;
-  background-color: #4caf50;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-left: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 6px 12px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: auto;
 }
 
 .Add-to-fav:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 
 #results-container {
-  display: none; /* initially hidden */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: white;
-  z-index: 100;
-  border-radius: 5px;
-  width: 80%; /* use percentage to make it responsive */
-  max-width: 500px;
-  text-align: left;
+    display: none;
+    /* initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    z-index: 100;
+    border-radius: 5px;
+    width: 80%;
+    /* use percentage to make it responsive */
+    max-width: 500px;
+    text-align: left;
 }
 
 #results-container.modal-open {
-  display: block;
-  margin-top: 20px;
+    display: block;
+    margin-top: 20px;
 }
 
 .modal-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: white;
-  background-color: red;
-  padding: 3px;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    background-color: red;
+    padding: 3px;
 }
 
 .modal {
-  margin: 10px;
-  display: none; 
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 80%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+    margin: 10px;
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 80%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 74%;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 74%;
 }
 
-.delete-button{
-  float: right;
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: rgb(236, 32, 32);
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-right: 10px;
+.delete-button {
+    float: right;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(236, 32, 32);
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 #fav-container button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-right: 10px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 #fav-container button:hover {
-  background-color: #45a049;
+    background-color: #45a049;
 }
 
 #fav-container button:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4caf50;
+    outline: none;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4caf50;
 }
 
-.Add-to-fav{
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-right: 10px;
+.Add-to-fav {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px;
 }
