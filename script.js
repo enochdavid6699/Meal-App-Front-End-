@@ -1,7 +1,9 @@
 const searchInput = document.getElementById('search-input');
 const suggestionsContainer = document.getElementById('suggestions-container');
 const resultsContainer = document.getElementById('results-container');
-const favouritesList = document.getElementById('favourites-list');
+const favContainer = document.getElementById('fav-container');
+
+let favourites = [];
 
 // Event listener for search input
 searchInput.addEventListener('input', () => {
@@ -29,8 +31,19 @@ searchInput.addEventListener('input', () => {
           mealImage.alt = meal.strMeal;
           mealImage.classList.add('meal-image');
 
+          //create fav button
+          const favButton = document.createElement('button');
+          favButton.textContent = 'Add to Fav';
+          suggestionsContainer.appendChild(favButton);
+
           suggestion.appendChild(mealImage);
           suggestionsContainer.appendChild(suggestion);
+
+          // Event delegation for suggestion click events
+          favButton.addEventListener('click', event => {
+            favourites.push(meal.strMeal);
+            console.log(meal.strMeal);
+          });
         });
       }
     })
@@ -97,4 +110,80 @@ function showMealDetails(meal) {
 
   // Show the modal
   resultsContainer.classList.add('modal-open');
+}
+
+
+
+// Event delegation for Favourites click events
+favContainer.addEventListener('click', event => {
+  showFav();
+});
+
+
+//To Display all the Favourites
+async function showFav() {
+  let meals = [];
+  for (let i = 0; i < favourites.length; i++) {
+      try {
+          const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${favourites[i]}`);
+          const data = await response.json();
+          if (data.meals) {
+              meals.push(data.meals[0]);
+          }
+      } catch (error) {
+          console.error('Error fetching meal details:', error);
+      }
+  }
+  showFavDetails(meals);
+}
+
+function showFavDetails(meals) {
+  // First, clear all previous modals
+  const existingModals = document.querySelectorAll('.modal');
+  existingModals.forEach(modal => modal.remove());
+
+  // Then, create a new modal
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.style.display = 'block';
+
+  const content = document.createElement('div');
+  content.className = 'modal-content';
+
+  meals.forEach((meal, index) => {
+      const mealName = document.createElement('h2');
+      mealName.textContent = meal.strMeal;
+
+      const mealImage = document.createElement('img');
+      mealImage.src = meal.strMealThumb;
+      mealImage.alt = meal.strMeal;
+
+      const removeButton = document.createElement('button');
+      removeButton.textContent = 'Remove from Favourites';
+      removeButton.onclick = function() {
+          // remove the meal from favourites
+          const removedFavourite = favourites.splice(index, 1);
+          console.log(`Removed ${removedFavourite} from favourites.`);
+          
+          // then remove it from the modal
+          mealName.remove();
+          mealImage.remove();
+          removeButton.remove();
+      }
+      
+      content.appendChild(mealName);
+      content.appendChild(mealImage);
+      content.appendChild(removeButton);
+  });
+
+  const closeButton = document.createElement('button');
+  closeButton.textContent = 'X';
+  closeButton.classList.add('modal-close');
+  modal.appendChild(closeButton);
+  closeButton.onclick = function () {
+      modal.style.display = 'none';
+  }
+
+  modal.appendChild(content);
+  document.body.appendChild(modal);
 }
